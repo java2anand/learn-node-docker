@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  node-docker:
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: 'node-docker'
+    restart: 'always'
+    ports:
+      - "4321:4321"
+    volumes: 
+      - .:/app
+      - ./app/node_modules
+    networks:
+      - node-docker
+networks:
+  node-docker:
+    name: node-docker
